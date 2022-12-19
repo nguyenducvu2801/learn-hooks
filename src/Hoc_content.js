@@ -1,6 +1,6 @@
 import {memo} from "react"
 
-// Xử dụng import qua file Hoc_memo.js
+// Xử dụng import qua file Hoc_memo.jsjhjhjh
 /*function Content(){
     console.log('re-render')
     return (
