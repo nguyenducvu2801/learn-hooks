@@ -1,0 +1,145 @@
+@import './Variable.scss';
+
+h3 {
+    color: $blueColor;
+    border: 1px solid $redColor;
+}
+
+
+// Nested Sass 
+nav {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+            padding: 10px;
+            display: inline-block;
+        }
+
+        a {
+            padding: 10px;
+            text-decoration: none;
+            color: $blueColor;
+            font-size: $normalSize;
+            background-color: skyblue;
+
+            &:hover {
+                background: $hoverColor;
+                color: $textHoverColor;
+            }
+        }
+    }
+}
+
+
+// Mixin Sass
+@mixin button($a, $b) {
+    margin: 10px 10px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: skyblue;
+
+    &:hover {
+        cursor: pointer;
+        background: $a;
+        color: $b
+    }
+}
+
+.success {
+    @include button (green, yellow);
+}
+
+.danger {
+    @include button(red, #ccc);
+}
+
+
+// Extend Sass
+.register {
+    color: #fff;
+    background: orange;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.border {
+    border: 2px solid darkgoldenrod
+}
+
+.content {
+    @extend .register;
+    @extend .border;
+    padding: 20px;
+    max-width: 1000px;
+    margin-top: 10px;
+}
+
+
+// If else Sass
+$screenWidth: 500px;
+
+@if($screenWidth > 500px) {
+    h1 {
+        border: 1px solid orange;
+        width: 600px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
+
+@else {
+    @if($screenWidth ==500px) {
+        h1 {
+            border: 1px solid orange;
+            width: 500px;
+            padding: 10px;
+            border-radius: 5px;
+            background: skyblue;
+            color: #333;
+        }
+    }
+
+    @else {
+        h1 {
+            padding: 10px;
+        }
+    }
+}
+
+// For loop Sass
+@for $i from 1 through 5 {
+    .for-item-#{$i} {
+        background: green;
+        border: 1px solid #999;
+        color: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+}
+
+
+//  Each loop Sass
+$sizes: 1, 2, 3, 4, 5;
+@each $size in $sizes {
+    .each-item-#{$size} {
+        font-size: 14px;
+        color: purple;
+    }
+}
+
+// Function Sass
+@function setWidth($width) {
+    @if($width < 10px) {
+        @return ($width + 200px)
+    };
+    @return $width;
+}
+.functionContainer {
+    width: setWidth(300px)
+}
